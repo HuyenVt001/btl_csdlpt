@@ -6,7 +6,7 @@ RROBIN_TABLE_PREFIX = 'rrobin_part'
 USER_ID_COLNAME = 'userid'
 MOVIE_ID_COLNAME = 'movieid'
 RATING_COLNAME = 'rating'
-INPUT_FILE_PATH = 'E:/Download/ml-10m/ml-10M100K/small_ratings.dat'
+INPUT_FILE_PATH = 'E:/Download/ml-10m/ml-10M100K/small_ratings.dat' #đường dẫn file đầu ra ở file data.py
 ACTUAL_ROWS_IN_INPUT_FILE = 50  # Number of lines in the input file
 
 import traceback
