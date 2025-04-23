@@ -7,20 +7,19 @@ USER_ID_COLNAME = 'userid'
 MOVIE_ID_COLNAME = 'movieid'
 RATING_COLNAME = 'rating'
 
-# SETUP Functions
 def createdb(dbname):
     """
     Tạo một cơ sở dữ liệu trong MySQL.
     Kiểm tra xem cơ sở dữ liệu đã tồn tại chưa, nếu chưa thì tạo mới.
     """
-    con = getopenconnection(dbname='mysql')  # Kết nối tới cơ sở dữ liệu mặc định 'mysql'
+    con = getopenconnection(dbname='mysql')  
     cur = con.cursor()
 
     # Kiểm tra xem cơ sở dữ liệu đã tồn tại chưa
     cur.execute("SELECT COUNT(*) FROM information_schema.schemata WHERE schema_name = %s", (dbname,))
     count = cur.fetchone()[0]
     if count == 0:
-        cur.execute('CREATE DATABASE %s' % dbname)  # Tạo cơ sở dữ liệu
+        cur.execute('CREATE DATABASE %s' % dbname) 
         con.commit()
     else:
         print('A database named "{0}" already exists'.format(dbname))
@@ -85,7 +84,6 @@ def getCountroundrobinpartition(ratingstablename, numberofpartitions, openconnec
     cur.close()
     return countList
 
-# Helpers for Tester functions
 def checkpartitioncount(cursor, expectedpartitions, prefix):
     cursor.execute(
         "SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = DATABASE() AND table_name LIKE %s", (prefix + '%',))

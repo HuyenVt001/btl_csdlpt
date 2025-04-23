@@ -1,8 +1,3 @@
-#!/usr/bin/python2.7
-#
-# Interface for the assignment
-#
-
 import pymysql
 
 DATABASE_NAME = 'dds_assgn1'
@@ -34,7 +29,6 @@ def loadratings(ratingstablename, ratingsfilepath, openconnection):
                 print(f"Skipping invalid line: {line.strip()} (expected 4 values, got {len(values)})")
                 continue
             try:
-                # Chuẩn hóa dữ liệu: chuyển kiểu cho các giá trị
                 userid = int(values[0])
                 movieid = int(values[1])
                 rating = float(values[2])
@@ -47,7 +41,6 @@ def loadratings(ratingstablename, ratingsfilepath, openconnection):
             raise ValueError("No valid data found in the file.")
         cur.executemany(insert_query, data)
 
-    # Xóa các cột không cần thiết
     cur.execute(
         "ALTER TABLE %s DROP COLUMN timestamp" % ratingstablename)
 
