@@ -31,21 +31,23 @@ if __name__ == '__main__':
         else:
             print("loadratings function fail!")
 
-        # Test range partitioning
-        [result, e] = testHelper.testrangepartition(MyAssignment, RATINGS_TABLE, 5, conn, 0, ACTUAL_ROWS_IN_INPUT_FILE)
+        # Test round robin partitioning
+        [result, e] = testHelper.testroundrobinpartition(MyAssignment, RATINGS_TABLE, 5, conn, 0, ACTUAL_ROWS_IN_INPUT_FILE)
         if result:
-            print("rangepartition function pass!")
+            print("roundrobinpartition function pass!")
         else:
-            print("rangepartition function fail!")
+            print("roundrobinpartition function fail")
 
-        # ALERT:: Use only one at a time
-        [result, e] = testHelper.testrangeinsert(MyAssignment, RATINGS_TABLE, 100, 2, 3, conn, '2')
-        # [result, e] = testHelper.testrangeinsert(MyAssignment, RATINGS_TABLE, 100, 2, 0, conn, '0')
+        # ALERT:: Change the partition index according to your testing sequence
+        [result, e] = testHelper.testroundrobininsert(MyAssignment, RATINGS_TABLE, 100, 1, 3, conn, '0')
+        # [result, e] = testHelper.testroundrobininsert(MyAssignment, RATINGS_TABLE, 100, 1, 3, conn, '1')
+        # [result, e] = testHelper.testroundrobininsert(MyAssignment, RATINGS_TABLE, 100, 1, 3, conn, '2')
         if result:
-            print("rangeinsert function pass!")
+            print("roundrobininsert function pass!")
         else:
-            print("rangeinsert function fail!")
+            print("roundrobininsert function fail!")
 
+        # Optionally delete all tables after testing
         choice = input('Press enter to Delete all tables? ')
         if choice == '':
             testHelper.deleteAllPublicTables(conn)
