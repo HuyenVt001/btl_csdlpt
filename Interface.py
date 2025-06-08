@@ -1,9 +1,11 @@
 import pymysql
+import config
 
-DATABASE_NAME = 'dds_assgn1'
+DATABASE_NAME = config.DATABASE_NAME
+USERNAME = config.USERNAME
+PASSWORD = config.PASSWORD
 
-
-def getopenconnection(user='root', password='291004', dbname='mysql'):
+def getopenconnection(user=USERNAME, password=PASSWORD, dbname='mysql'):
     return pymysql.connect(host='localhost', user=user, password=password, database=dbname)
 
 

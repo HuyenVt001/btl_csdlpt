@@ -1,16 +1,17 @@
-DATABASE_NAME = 'dds_assgn1'
+import traceback
+import testHelper
+import Interface as MyAssignment
+import config
+
+DATABASE_NAME = config.DATABASE_NAME
+INPUT_FILE_PATH = config.INPUT_FILE_PATH
+ACTUAL_ROWS_IN_INPUT_FILE = config.ACTUAL_ROWS_IN_INPUT_FILE
 
 RATINGS_TABLE = 'ratings'
 RANGE_TABLE_PREFIX = 'range_part'
 USER_ID_COLNAME = 'userid'
 MOVIE_ID_COLNAME = 'movieid'
 RATING_COLNAME = 'rating'
-INPUT_FILE_PATH = './small_ratings.dat' #đường dẫn file đầu ra ở file data.py
-ACTUAL_ROWS_IN_INPUT_FILE = 50  
-
-import traceback
-import testHelper
-import Interface as MyAssignment
 
 if __name__ == '__main__':
     try:
